@@ -28,7 +28,7 @@ export function Navbar() {
                   {statusLabel}
                 </span>
               </div>
-              <p className="hidden text-xs text-slate-400 sm:block">{copy.brand}</p>
+              <p className="hidden text-xs text-slate-300 sm:block">{copy.brand}</p>
             </div>
           </Link>
 

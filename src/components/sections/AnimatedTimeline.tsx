@@ -27,9 +27,9 @@ export function AnimatedTimeline({ items }: AnimatedTimelineProps) {
           >
             <div className={index % 2 === 0 ? "md:col-span-1" : "md:col-span-1 md:col-start-2"}>
               <div className="rounded-2xl border border-slate-700/80 bg-slate-900/80 p-5">
-                <p className="text-sm font-semibold text-slate-400">0{index + 1}</p>
+                <p className="text-sm font-semibold text-slate-300">0{index + 1}</p>
                 <h3 className="mt-2 text-lg font-semibold text-slate-50">{item.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{item.description}</p>
+                <p className="mt-2 text-sm leading-6 text-slate-300">{item.description}</p>
               </div>
             </div>
             <div className={index % 2 === 0 ? "hidden md:block" : "hidden md:block md:col-start-1 md:row-start-1"} />

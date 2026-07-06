@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ArrowRight } from "lucide-react";
@@ -14,6 +13,7 @@ import { TechStackCloud } from "@/components/sections/TechStackCloud";
 import { getCaseStudies } from "@/content/case-studies";
 import { getDemoProjects } from "@/content/projects";
 import { getSiteCopy } from "@/content/site-copy";
+import { SeoHead } from "@/components/seo/SeoHead";
 
 export default function HomePage() {
   const router = useRouter();
@@ -23,10 +23,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Head>
-        <title>{`Sebastian Camargo | ${copy.brand}`}</title>
-        <meta name="description" content={copy.hero.description} />
-      </Head>
+      <SeoHead title={`Sebastian Camargo | ${copy.brand}`} description={copy.hero.description} />
 
       <HeroSection />
       <AboutSection />
@@ -47,7 +44,7 @@ export default function HomePage() {
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="mt-4 text-sm text-slate-400">{copy.featured.carouselHint}</div>
+          <div className="mt-4 text-sm text-slate-300">{copy.featured.carouselHint}</div>
           <div className="mt-8">
             <CaseStudyCarousel studies={caseStudies} />
           </div>
@@ -83,9 +80,9 @@ export default function HomePage() {
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
             {demoProjects.map((project) => (
               <article key={project.slug} className="rounded-3xl border border-slate-700/80 bg-slate-900/80 p-6">
-                <p className="text-xs uppercase tracking-[0.35em] text-slate-400">{copy.demos.cardLabel}</p>
+                <p className="text-xs uppercase tracking-[0.35em] text-slate-300">{copy.demos.cardLabel}</p>
                 <h3 className="mt-3 text-2xl font-semibold text-slate-50">{project.title}</h3>
-                <p className="mt-4 text-sm leading-6 text-slate-400">{project.description}</p>
+                <p className="mt-4 text-sm leading-6 text-slate-300">{project.description}</p>
                 <p className="mt-4 text-sm leading-6 text-slate-200">{project.highlight}</p>
                 <TechStackCloud items={project.stack} />
               </article>

@@ -21,7 +21,7 @@ export function CTASection() {
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
               {copy.contact.title}
             </h2>
-            <p className="mt-4 text-base leading-7 text-slate-300">
+            <p className="mt-4 text-base leading-7 text-slate-200">
               {copy.contact.description}
             </p>
           </div>

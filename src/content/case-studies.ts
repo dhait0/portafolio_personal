@@ -5,6 +5,7 @@ export type CaseStudy = {
   title: string;
   category: string;
   summary: string;
+  metrics: Array<[string, string]>;
   overview: string;
   problem: string;
   solution: string;
@@ -28,6 +29,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "Automatización e IA",
       summary:
         "Automatización de flujo operativo con Microsoft 365, LDAP, Nextcloud, OpenRouter y n8n para reducir trabajo manual y errores en procesos basados en Excel.",
+      metrics: [
+        ["45% → 15%", "reducción aproximada de errores"],
+        ["80%", "menos tiempo de gestión operativa"],
+        ["100%+", "de incremento frente al flujo previo"],
+      ],
       overview:
         "Diseñé una capa de automatización tipo ERP, adaptada a la forma real en la que operaba la empresa. El objetivo fue capturar oportunidades, generar documentos con IA, sincronizar información entre sistemas y quitar trabajo repetitivo de hojas de cálculo y formularios manuales.",
       problem:
@@ -72,6 +78,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "Desarrollo Web",
       summary:
         "Portal interno centralizado para operaciones, paneles, registros y gestión de datos con enfoque de producto.",
+      metrics: [
+        ["1", "portal central para la operación"],
+        ["4", "zonas funcionales principales"],
+        ["Docker", "despliegue preparado para contenedores"],
+      ],
       overview:
         "Desarrollé y adapté módulos para una plataforma interna tipo SaaS que unificaba información, accesos y reportes en una sola experiencia para usuarios operativos.",
       problem:
@@ -114,6 +125,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "DevOps e Infraestructura",
       summary:
         "Pipeline de entrega que validaba tipado, bugs y seguridad antes de construir la imagen y desplegarla.",
+      metrics: [
+        ["1", "merge a main como disparador"],
+        ["3+", "capas de validación antes del deploy"],
+        ["0", "despliegues manuales sin control"],
+      ],
       overview:
         "Configuré un flujo CI/CD para que cada merge a `main` pasara por validaciones reproducibles antes de llegar a producción. El objetivo era estabilizar la forma de construir y entregar las aplicaciones.",
       problem:
@@ -156,6 +172,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "Adaptación de Plataforma",
       summary:
         "Ajuste de varias herramientas open source para proyectos internos, CRM, capacitaciones, nube y firmas digitales.",
+      metrics: [
+        ["5", "herramientas adaptadas"],
+        ["3+", "casos de uso internos cubiertos"],
+        ["1", "modelo de administración mantenido"],
+      ],
       overview:
         "Tomé soluciones open source ya existentes y las adapté a diferentes necesidades del negocio: gestión de proyectos, CRM, capacitación, almacenamiento en nube, formularios internos y firmas digitales.",
       problem:
@@ -198,6 +219,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "Integraciones Enterprise",
       summary:
         "Automatización de archivos, carpetas, publicaciones y comunicación dentro de SharePoint y Teams.",
+      metrics: [
+        ["2", "servicios principales: SharePoint y Teams"],
+        ["3", "tipos de operación cubiertos"],
+        ["1", "capa de permisos e IDs definida"],
+      ],
       overview:
         "Construí integraciones sobre Microsoft 365 para mejorar el control de archivos, el manejo de versiones y la comunicación interna en SharePoint y Teams.",
       problem:
@@ -240,6 +266,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "Infraestructura",
       summary:
         "Cluster de virtualización para servicios internos, pruebas y despliegues de software open source.",
+      metrics: [
+        ["3", "servidores dentro del cluster"],
+        ["1", "servidor adicional para pruebas"],
+        ["Diario", "copias y monitoreo"],
+      ],
       overview:
         "Administré una nube privada basada en Proxmox para alojar contenedores y máquinas virtuales que soportaban herramientas internas de la empresa.",
       problem:
@@ -284,6 +315,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "Automation & AI",
       summary:
         "Operational workflow automation using Microsoft 365, LDAP, Nextcloud, OpenRouter and n8n to reduce manual work and Excel-driven errors.",
+      metrics: [
+        ["45% → 15%", "approximate error reduction"],
+        ["80%", "less management time"],
+        ["100%+", "increase over the previous flow"],
+      ],
       overview:
         "Built an ERP-like automation layer adapted to the company’s actual operating model. The goal was to capture opportunities, generate AI-assisted documents, sync data across tools and remove repetitive spreadsheet work.",
       problem:
@@ -328,6 +364,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "Web Development",
       summary:
         "Centralized internal portal for operations, dashboards, records and data management with a product-first mindset.",
+      metrics: [
+        ["1", "central portal for internal operations"],
+        ["4", "core functional areas"],
+        ["Docker", "container-ready deployment"],
+      ],
       overview:
         "Developed and adapted modules for an internal SaaS-style platform that unified information, access and reporting into one experience for operational users.",
       problem:
@@ -370,6 +411,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "DevOps & Infrastructure",
       summary:
         "Delivery pipeline that checked typing, bugs and security before building the image and deploying it.",
+      metrics: [
+        ["1", "merge to main as trigger"],
+        ["3+", "validation layers before deploy"],
+        ["0", "manual releases without control"],
+      ],
       overview:
         "Set up a CI/CD flow so every merge into `main` went through repeatable checks before reaching production. The goal was to stabilize how applications were built and delivered.",
       problem:
@@ -412,6 +458,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "Platform Adaptation",
       summary:
         "Tailored several open source tools for internal project management, CRM, training, storage and digital signatures.",
+      metrics: [
+        ["5", "open source tools adapted"],
+        ["3+", "internal use cases covered"],
+        ["1", "admin model kept stable"],
+      ],
       overview:
         "Adapted existing open source solutions to different business needs: project management, CRM, training, cloud storage, internal forms and digital signatures.",
       problem:
@@ -454,6 +505,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "Enterprise Integrations",
       summary:
         "Automation for files, folders, posts and communication inside SharePoint and Teams.",
+      metrics: [
+        ["2", "main Microsoft 365 services"],
+        ["3", "operation areas covered"],
+        ["1", "permission model documented"],
+      ],
       overview:
         "Built Microsoft 365 integrations to improve file control, version tracking and internal communication across SharePoint and Teams.",
       problem:
@@ -496,6 +552,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       category: "Infrastructure",
       summary:
         "Virtualization cluster for internal services, testing and open source software deployments.",
+      metrics: [
+        ["3", "nodes in the cluster"],
+        ["1", "extra test server outside the cluster"],
+        ["Daily", "backups and monitoring"],
+      ],
       overview:
         "Managed a Proxmox-based private cloud that hosted containers and virtual machines supporting the company’s internal tools.",
       problem:

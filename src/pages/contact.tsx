@@ -1,10 +1,10 @@
-import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Github, Linkedin, Mail, ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getProfileLinks, mailTo } from "@/lib/profile";
 import { getSiteCopy } from "@/content/site-copy";
+import { SeoHead } from "@/components/seo/SeoHead";
 
 const profileLinks = getProfileLinks();
 
@@ -14,10 +14,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <Head>
-        <title>{`${copy.contact.title} | Sebastian Camargo`}</title>
-        <meta name="description" content={copy.contact.description} />
-      </Head>
+      <SeoHead title={`${copy.contact.title} | Sebastian Camargo`} description={copy.contact.description} />
 
       <main className="px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">

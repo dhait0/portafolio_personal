@@ -26,7 +26,7 @@ export function CaseStudyCard({ caseStudy, compact }: CaseStudyCardProps) {
     >
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.35em] text-slate-400">{caseStudy.category}</p>
+          <p className="text-xs uppercase tracking-[0.35em] text-slate-300">{caseStudy.category}</p>
           <h3 className="mt-3 text-2xl font-semibold text-slate-50">{caseStudy.title}</h3>
         </div>
         <div className="rounded-full border border-slate-700/80 bg-slate-950/60 p-2 text-slate-300">
@@ -34,7 +34,7 @@ export function CaseStudyCard({ caseStudy, compact }: CaseStudyCardProps) {
         </div>
       </div>
 
-      <p className="mt-4 text-sm leading-6 text-slate-400">{caseStudy.summary}</p>
+      <p className="mt-4 text-sm leading-6 text-slate-300">{caseStudy.summary}</p>
       {!compact ? <p className="mt-4 text-sm leading-6 text-slate-200">{caseStudy.overview}</p> : null}
 
       <div className="mt-5 flex flex-wrap gap-2">

@@ -1,13 +1,14 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
-import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ArrowLeft, Lock } from "lucide-react";
 import { ArchitectureDiagram } from "@/components/sections/ArchitectureDiagram";
+import { ProjectMetric } from "@/components/sections/ProjectMetric";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TechStackCloud } from "@/components/sections/TechStackCloud";
 import { getCaseStudies, getCaseStudyBySlug, type CaseStudy } from "@/content/case-studies";
 import { getSiteCopy } from "@/content/site-copy";
+import { SeoHead } from "@/components/seo/SeoHead";
 
 type CaseStudyPageProps = {
   study: CaseStudy;
@@ -49,10 +50,7 @@ export default function CaseStudyPage({ study }: CaseStudyPageProps) {
 
   return (
     <>
-      <Head>
-        <title>{`${study.title} | Sebastian Camargo`}</title>
-        <meta name="description" content={study.summary} />
-      </Head>
+      <SeoHead title={`${study.title} | Sebastian Camargo`} description={study.summary} />
 
       <main className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
@@ -72,6 +70,11 @@ export default function CaseStudyPage({ study }: CaseStudyPageProps) {
             <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">{study.summary}</p>
             <div className="mt-6">
               <TechStackCloud items={study.techStack} />
+            </div>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {study.metrics.map(([value, label]) => (
+                <ProjectMetric key={`${study.slug}-${value}`} value={value} label={label} />
+              ))}
             </div>
           </section>
 

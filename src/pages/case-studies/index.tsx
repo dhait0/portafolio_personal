@@ -1,9 +1,9 @@
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { CaseStudyCard } from "@/components/sections/CaseStudyCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getCaseStudies } from "@/content/case-studies";
 import { getSiteCopy } from "@/content/site-copy";
+import { SeoHead } from "@/components/seo/SeoHead";
 
 export default function CaseStudiesIndexPage() {
   const router = useRouter();
@@ -12,10 +12,7 @@ export default function CaseStudiesIndexPage() {
 
   return (
     <>
-      <Head>
-        <title>{`${copy.caseStudiesPage.title} | Sebastian Camargo`}</title>
-        <meta name="description" content={copy.caseStudiesPage.description} />
-      </Head>
+      <SeoHead title={`${copy.caseStudiesPage.title} | Sebastian Camargo`} description={copy.caseStudiesPage.description} />
 
       <main className="px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
