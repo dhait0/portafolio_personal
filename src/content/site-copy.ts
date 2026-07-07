@@ -24,18 +24,12 @@ export const siteCopy = {
       signalValue: "Soluciones prácticas para problemas reales",
       stackLabel: "Qué puedo construir",
       stackValue: "Web + automatización + despliegue",
-      stats: [
-        ["Menos", "tareas repetitivas para tu equipo"],
-        ["Más", "orden en procesos e información"],
-        ["Claro", "explicación simple de cada entrega"],
-      ],
       chips: ["React", "TypeScript", "n8n", "Microsoft Graph", "Jenkins", "Docker", "Proxmox"],
       floating: {
         integrations: ["Conexión entre herramientas", "Microsoft 365, formularios, bases de datos y servicios externos"],
         automation: ["Automatización de tareas", "Flujos con n8n, IA y reglas claras para ahorrar tiempo"],
         delivery: ["Publicación y mantenimiento", "Docker, Jenkins y servidores listos para operar"],
       },
-      sideLabels: ["Herramientas internas / páginas web / automatización", "Sistemas útiles desde el primer uso"],
     },
     about: {
       eyebrow: "Sobre mí",
@@ -186,18 +180,12 @@ export const siteCopy = {
       signalValue: "Practical solutions for real problems",
       stackLabel: "What I can build",
       stackValue: "Web + automation + deployment",
-      stats: [
-        ["Less", "repetitive work for your team"],
-        ["More", "order in processes and information"],
-        ["Clear", "simple explanation for every delivery"],
-      ],
       chips: ["React", "TypeScript", "n8n", "Microsoft Graph", "Jenkins", "Docker", "Proxmox"],
       floating: {
         integrations: ["Tool connections", "Microsoft 365, forms, databases and external services"],
         automation: ["Task automation", "n8n, AI and clear rules to save time"],
         delivery: ["Launch and maintenance", "Docker, Jenkins and servers ready to operate"],
       },
-      sideLabels: ["Internal tools / websites / automation", "Useful systems from the first version"],
     },
     about: {
       eyebrow: "About",

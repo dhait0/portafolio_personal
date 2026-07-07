@@ -8,7 +8,6 @@ import {
   Bot,
   Braces,
   LayoutDashboard,
-  LineChart,
   ShieldCheck,
   Sparkles,
   Workflow,
@@ -58,22 +57,6 @@ export function HeroSection() {
             >
               {copy.hero.ctas.secondary}
             </Link>
-          </div>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            {[
-              [copy.hero.signal, copy.hero.signalValue],
-              [copy.hero.stackLabel, copy.hero.stackValue],
-              [copy.hero.sideLabels[0], copy.hero.sideLabels[1]],
-            ].map(([title, detail]) => (
-              <div
-                key={title}
-                className="surface rounded-2xl p-4 transition hover:-translate-y-1 hover:border-orange-200/40"
-              >
-                <p className="text-xs uppercase tracking-[0.26em] text-subtle">{title}</p>
-                <p className="mt-2 text-sm leading-6 text-muted">{detail}</p>
-              </div>
-            ))}
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3 text-sm text-muted">
@@ -167,20 +150,6 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div className="surface rounded-3xl p-4">
-              <p className="text-xs uppercase tracking-[0.26em] text-subtle">{copy.hero.signal}</p>
-              <div className="mt-3 grid gap-2">
-                {copy.hero.stats.map(([value, detail]) => (
-                  <div key={value} className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2">
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="font-display text-xl font-bold text-main">{value}</p>
-                      <LineChart className="h-4 w-4 text-[var(--color-orange-strong)]" />
-                    </div>
-                    <p className="mt-1 text-xs leading-5 text-muted">{detail}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </motion.div>
       </div>
