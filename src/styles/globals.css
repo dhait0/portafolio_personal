@@ -106,30 +106,19 @@ body > :not(.page-noise) {
   animation: marquee 28s linear infinite;
 }
 
-@keyframes case-carousel {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
+.case-carousel-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
 }
 
-.case-carousel-track {
-  animation: case-carousel 84s linear infinite;
-  will-change: transform;
-}
-
-.case-carousel-track:hover,
-.case-carousel-track:focus-within {
-  animation-play-state: paused;
+.case-carousel-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .case-carousel-track {
-    animation: none;
-    transform: none;
+  .case-carousel-scroll {
+    scroll-behavior: auto;
   }
 }
 
