@@ -17,7 +17,7 @@ export function TechStackCloud({ items }: TechStackCloudProps) {
           viewport={{ once: true }}
           transition={{ delay: index * 0.03, duration: 0.35 }}
           whileHover={{ y: -3 }}
-          className="rounded-full border border-slate-700/80 bg-slate-900/80 px-4 py-2 text-sm text-slate-200"
+          className="rounded-full surface px-4 py-2 text-sm text-muted"
         >
           {item}
         </motion.span>

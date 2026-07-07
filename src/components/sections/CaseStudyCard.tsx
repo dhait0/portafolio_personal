@@ -18,16 +18,16 @@ export function CaseStudyCard({ caseStudy, compact }: CaseStudyCardProps) {
   const cover = getCaseStudyImage(caseStudy);
 
   return (
-    <Link href={`/case-studies/${caseStudy.slug}`} className="group block h-full outline-none focus-visible:ring-2 focus-visible:ring-sky-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">
+    <Link href={`/case-studies/${caseStudy.slug}`} className="group block h-full outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-page-deep)]">
       <motion.article
         whileHover={{ y: -6 }}
         transition={{ type: "spring", stiffness: 260, damping: 24 }}
         className={cn(
-          "flex h-full flex-col rounded-3xl border border-slate-700/80 bg-slate-900/80 p-6 transition-colors group-hover:border-sky-500/40",
-          compact ? "min-h-[220px]" : "min-h-[320px]",
+          "surface flex h-full flex-col rounded-3xl p-5 transition-colors group-hover:border-orange-200/40 sm:p-6",
+          compact ? "min-h-[220px]" : "min-h-[300px]",
         )}
       >
-        <div className="relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-950/60">
+        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
           <div className="relative aspect-[16/10]">
             <Image
               src={cover.src}
@@ -36,8 +36,8 @@ export function CaseStudyCard({ caseStudy, compact }: CaseStudyCardProps) {
               sizes="(max-width: 1024px) 86vw, 440px"
               className="object-cover transition duration-500 group-hover:scale-[1.03]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent" />
-            <div className="absolute left-4 top-4 rounded-full border border-white/10 bg-slate-950/70 px-3 py-1 text-[0.65rem] uppercase tracking-[0.35em] text-slate-200">
+            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(11,23,36,0.92)] via-[rgba(11,23,36,0.18)] to-transparent" />
+            <div className="absolute left-3 top-3 rounded-full border border-white/10 bg-[rgba(11,23,36,0.72)] px-3 py-1 text-[0.65rem] uppercase tracking-[0.24em] text-muted sm:left-4 sm:top-4">
               {caseStudy.category}
             </div>
           </div>
@@ -45,27 +45,27 @@ export function CaseStudyCard({ caseStudy, compact }: CaseStudyCardProps) {
 
         <div className="mt-5 flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-slate-300">{caseStudy.category}</p>
-            <h3 className="mt-3 text-2xl font-semibold text-slate-50">{caseStudy.title}</h3>
+            <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-orange-strong)]">{caseStudy.category}</p>
+            <h3 className="mt-3 text-xl font-semibold text-main sm:text-2xl">{caseStudy.title}</h3>
           </div>
-          <div className="rounded-full border border-slate-700/80 bg-slate-950/60 p-2 text-slate-300">
+          <div className="rounded-full border border-white/10 bg-white/5 p-2 text-muted">
             <Lock className="h-4 w-4" />
           </div>
         </div>
 
-        <p className="mt-4 text-sm leading-6 text-slate-300">{caseStudy.summary}</p>
-        {!compact ? <p className="mt-4 text-sm leading-6 text-slate-200">{caseStudy.overview}</p> : null}
+        <p className="mt-4 text-sm leading-6 text-muted">{caseStudy.summary}</p>
+        {!compact ? <p className="mt-4 text-sm leading-6 text-muted">{caseStudy.overview}</p> : null}
 
         <div className="mt-5 flex flex-wrap gap-2">
           {caseStudy.techStack.slice(0, compact ? 3 : 4).map((tech) => (
-            <span key={tech} className="rounded-full border border-slate-700/80 bg-slate-950/60 px-3 py-1 text-xs text-slate-300">
+            <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted">
               {tech}
             </span>
           ))}
         </div>
 
         <div className="mt-auto pt-6">
-          <span className="inline-flex items-center gap-2 text-sm font-medium text-sky-300 transition group-hover:text-sky-200">
+          <span className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-orange-strong)] transition group-hover:text-[var(--color-orange-strong)]">
             {router.locale === "en" ? "View case study" : "Ver caso"}
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
           </span>

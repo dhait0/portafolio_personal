@@ -27,72 +27,72 @@ export default function ContactPage() {
           <div className="mt-10 grid gap-4">
             <Link
               href={mailTo(profileLinks.email)}
-              className="flex items-center justify-between rounded-3xl border border-slate-700/80 bg-slate-900/80 px-6 py-5 transition hover:border-slate-500 hover:bg-slate-800/90"
+              className="surface flex items-center justify-between gap-4 rounded-3xl px-4 py-5 transition hover:border-orange-200/40 hover:bg-white/10 sm:px-6"
             >
-              <div className="flex items-center gap-4">
-                <span className="rounded-2xl bg-slate-950/70 p-3 text-slate-200">
+              <div className="flex min-w-0 items-center gap-4">
+                <span className="shrink-0 rounded-2xl bg-white/5 p-3 text-[var(--color-orange-strong)]">
                   <Mail className="h-5 w-5" />
                 </span>
-                <div>
-                  <p className="font-semibold text-slate-50">{copy.contact.email}</p>
-                  <p className="text-sm text-slate-400">{profileLinks.email}</p>
+                <div className="min-w-0">
+                  <p className="font-semibold text-main">{copy.contact.email}</p>
+                  <p className="break-all text-sm text-subtle">{profileLinks.email}</p>
                 </div>
               </div>
-              <ArrowRight className="h-5 w-5 text-slate-400" />
+              <ArrowRight className="h-5 w-5 shrink-0 text-subtle" />
             </Link>
 
             <Link
               href={profileLinks.freelancer}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-between rounded-3xl border border-slate-700/80 bg-slate-900/80 px-6 py-5 transition hover:border-slate-500 hover:bg-slate-800/90"
+              className="surface flex items-center justify-between gap-4 rounded-3xl px-4 py-5 transition hover:border-orange-200/40 hover:bg-white/10 sm:px-6"
             >
-              <div className="flex items-center gap-4">
-                <span className="rounded-2xl bg-slate-950/70 p-3 text-slate-200">
+              <div className="flex min-w-0 items-center gap-4">
+                <span className="shrink-0 rounded-2xl bg-white/5 p-3 text-[var(--color-blue)]">
                   <ArrowRight className="h-5 w-5" />
                 </span>
-                <div>
-                  <p className="font-semibold text-slate-50">{copy.contact.freelancer}</p>
-                  <p className="text-sm text-slate-400">{copy.contact.labels.freelancer}</p>
+                <div className="min-w-0">
+                  <p className="font-semibold text-main">{copy.contact.freelancer}</p>
+                  <p className="text-sm text-subtle">{copy.contact.labels.freelancer}</p>
                 </div>
               </div>
-              <ArrowRight className="h-5 w-5 text-slate-400" />
+              <ArrowRight className="h-5 w-5 shrink-0 text-subtle" />
             </Link>
 
             <Link
               href={profileLinks.github}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-between rounded-3xl border border-slate-700/80 bg-slate-900/80 px-6 py-5 transition hover:border-slate-500 hover:bg-slate-800/90"
+              className="surface flex items-center justify-between gap-4 rounded-3xl px-4 py-5 transition hover:border-orange-200/40 hover:bg-white/10 sm:px-6"
             >
-              <div className="flex items-center gap-4">
-                <span className="rounded-2xl bg-slate-950/70 p-3 text-slate-200">
+              <div className="flex min-w-0 items-center gap-4">
+                <span className="shrink-0 rounded-2xl bg-white/5 p-3 text-[var(--color-blue)]">
                   <Github className="h-5 w-5" />
                 </span>
-                <div>
-                  <p className="font-semibold text-slate-50">{copy.contact.github}</p>
-                  <p className="text-sm text-slate-400">{copy.contact.labels.github}</p>
+                <div className="min-w-0">
+                  <p className="font-semibold text-main">{copy.contact.github}</p>
+                  <p className="text-sm text-subtle">{copy.contact.labels.github}</p>
                 </div>
               </div>
-              <ArrowRight className="h-5 w-5 text-slate-400" />
+              <ArrowRight className="h-5 w-5 shrink-0 text-subtle" />
             </Link>
 
             <Link
               href={profileLinks.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-between rounded-3xl border border-slate-700/80 bg-slate-900/80 px-6 py-5 transition hover:border-slate-500 hover:bg-slate-800/90"
+              className="surface flex items-center justify-between gap-4 rounded-3xl px-4 py-5 transition hover:border-orange-200/40 hover:bg-white/10 sm:px-6"
             >
-              <div className="flex items-center gap-4">
-                <span className="rounded-2xl bg-slate-950/70 p-3 text-slate-200">
+              <div className="flex min-w-0 items-center gap-4">
+                <span className="shrink-0 rounded-2xl bg-white/5 p-3 text-[var(--color-blue)]">
                   <Linkedin className="h-5 w-5" />
                 </span>
-                <div>
-                  <p className="font-semibold text-slate-50">{copy.contact.linkedin}</p>
-                  <p className="text-sm text-slate-400">{copy.contact.labels.linkedin}</p>
+                <div className="min-w-0">
+                  <p className="font-semibold text-main">{copy.contact.linkedin}</p>
+                  <p className="text-sm text-subtle">{copy.contact.labels.linkedin}</p>
                 </div>
               </div>
-              <ArrowRight className="h-5 w-5 text-slate-400" />
+              <ArrowRight className="h-5 w-5 shrink-0 text-subtle" />
             </Link>
           </div>
         </div>

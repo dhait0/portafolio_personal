@@ -22,9 +22,9 @@ export function SkillMatrix() {
 
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           {skillGroups.map((group) => (
-            <article key={group.title} className="rounded-3xl border border-slate-700/80 bg-slate-900/80 p-6">
-              <h3 className="text-xl font-semibold text-slate-50">{group.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-300">{group.description}</p>
+            <article key={group.title} className="surface rounded-3xl p-6">
+              <h3 className="text-xl font-semibold text-main">{group.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted">{group.description}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <SkillPill key={skill} label={skill} />
