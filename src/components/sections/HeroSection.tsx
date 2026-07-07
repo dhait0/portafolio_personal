@@ -127,17 +127,17 @@ export function HeroSection() {
               <div className="mt-5 grid gap-3">
                 {[
                   {
-                    title: "Frontend systems",
+                    title: router.locale === "en" ? "Clear web screens" : "Pantallas web claras",
                     copy: copy.about.description,
                     icon: LayoutDashboard,
                   },
                   {
-                    title: "Automation layer",
+                    title: router.locale === "en" ? "Automatic tasks" : "Tareas automáticas",
                     copy: copy.hero.floating.automation[1],
                     icon: Workflow,
                   },
                   {
-                    title: "Delivery layer",
+                    title: router.locale === "en" ? "Launch support" : "Soporte para publicar",
                     copy: copy.hero.floating.delivery[1],
                     icon: ShieldCheck,
                   },

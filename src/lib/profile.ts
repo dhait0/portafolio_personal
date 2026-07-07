@@ -11,7 +11,7 @@ const fallbackProfileLinks: ProfileLinks = {
   github: "https://github.com/dhait0",
   linkedin: "https://www.linkedin.com/in/sebastian-camargo-a823b6322/",
   freelancer: "https://www.freelancer.com.co/u/Cptkeys?frm=Cptkeys&sb=t",
-  whatsapp: undefined,
+  whatsapp: "https://wa.me/573021091585",
 };
 
 export function getProfileLinks(): ProfileLinks {
