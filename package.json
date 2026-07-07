@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "set -a; [ -f .env ] && . ./.env; set +a; __NEXT_DEVTOOL_SEGMENT_EXPLORER= next dev --port ${PORT:-${HOST_PORT:-3000}}",
+    "dev": "set -a; [ -f .env ] && . ./.env; [ -f .env.local ] && . ./.env.local; set +a; __NEXT_DEVTOOL_SEGMENT_EXPLORER= next dev --port ${PORT:-${HOST_PORT:-3000}}",
     "build": "next build",
     "start": "node .next/standalone/server.js",
     "typecheck": "tsc --noEmit"

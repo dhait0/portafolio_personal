@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { ArrowRight, Github, Mail, CircleDotDashed, Languages } from "lucide-react";
 import { getProfileLinks, mailTo } from "@/lib/profile";
@@ -22,8 +23,15 @@ export function Navbar() {
       <div className="surface-strong mx-auto max-w-7xl rounded-3xl">
         <div className="flex items-center justify-between gap-3 px-3 py-3 sm:px-5">
           <Link href="/#hero" className="group flex items-center gap-3">
-            <span className="surface-soft flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl text-sm font-semibold text-main transition group-hover:scale-105 sm:h-11 sm:w-11">
-              SC
+            <span className="surface-soft flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-2xl transition group-hover:scale-105 sm:h-11 sm:w-11">
+              <Image
+                src="/favicon.png"
+                alt="Sebastian Camargo logo"
+                width={44}
+                height={44}
+                className="h-full w-full object-cover"
+                priority
+              />
             </span>
             <div className="min-w-0">
               <div className="flex items-center gap-2">

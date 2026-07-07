@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Github, Linkedin, Mail, ArrowRight } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowRight, MessageCircle } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getProfileLinks, mailTo } from "@/lib/profile";
 import { getSiteCopy } from "@/content/site-copy";
@@ -40,6 +40,26 @@ export default function ContactPage() {
               </div>
               <ArrowRight className="h-5 w-5 shrink-0 text-subtle" />
             </Link>
+
+            {profileLinks.whatsapp ? (
+              <Link
+                href={profileLinks.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="surface flex items-center justify-between gap-4 rounded-3xl px-4 py-5 transition hover:border-orange-200/40 hover:bg-white/10 sm:px-6"
+              >
+                <div className="flex min-w-0 items-center gap-4">
+                  <span className="shrink-0 rounded-2xl bg-white/5 p-3 text-[var(--color-orange-strong)]">
+                    <MessageCircle className="h-5 w-5" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-semibold text-main">{copy.contact.whatsapp}</p>
+                    <p className="text-sm text-subtle">{copy.contact.labels.whatsapp}</p>
+                  </div>
+                </div>
+                <ArrowRight className="h-5 w-5 shrink-0 text-subtle" />
+              </Link>
+            ) : null}
 
             <Link
               href={profileLinks.freelancer}

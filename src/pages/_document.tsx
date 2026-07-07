@@ -16,7 +16,10 @@ export default class MyDocument extends Document {
 
     return (
       <Html lang={locale ?? "es"}>
-        <Head />
+        <Head>
+          <link rel="icon" type="image/png" href="/favicon.png" />
+          <link rel="apple-touch-icon" href="/favicon.png" />
+        </Head>
         <body>
           <Main />
           <NextScript />

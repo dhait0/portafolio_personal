@@ -40,7 +40,7 @@ export function SeoHead({
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="theme-color" content="#04070d" />
+      <meta name="theme-color" content="#102132" />
       {canonicalUrl ? <link rel="canonical" href={canonicalUrl} /> : null}
       {ogUrl ? <meta property="og:url" content={ogUrl} /> : null}
       <meta property="og:title" content={title} />

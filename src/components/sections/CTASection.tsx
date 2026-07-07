@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { getProfileLinks, mailTo } from "@/lib/profile";
 import { getSiteCopy } from "@/content/site-copy";
 
@@ -34,6 +34,17 @@ export function CTASection() {
               <Mail className="h-4 w-4" />
               {copy.contact.email}
             </Link>
+            {profileLinks.whatsapp ? (
+              <Link
+                href={profileLinks.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-secondary px-6 py-3 text-sm"
+              >
+                <MessageCircle className="h-4 w-4" />
+                {copy.contact.whatsapp}
+              </Link>
+            ) : null}
             <Link
               href={profileLinks.freelancer}
               target="_blank"
