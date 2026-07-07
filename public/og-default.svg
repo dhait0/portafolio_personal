@@ -1,0 +1,40 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Sebastian Camargo Portfolio</title>
+  <desc id="desc">Dark premium portfolio cover with cyan technical accents.</desc>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="40" x2="1080" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#060B16"/>
+      <stop offset="1" stop-color="#0A1630"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="220" y1="120" x2="920" y2="540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#39D0FF"/>
+      <stop offset="1" stop-color="#1E90FF"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1200" height="630" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="28" flood-color="#02040A" flood-opacity="0.65"/>
+    </filter>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M 36 0 H 0 V 36" stroke="#8BCFFF" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="960" cy="120" r="180" fill="#1EA7FF" fill-opacity="0.12"/>
+  <circle cx="220" cy="520" r="220" fill="#39D0FF" fill-opacity="0.08"/>
+  <g filter="url(#shadow)">
+    <rect x="110" y="110" width="980" height="410" rx="36" fill="#07101E" fill-opacity="0.88" stroke="#67D8FF" stroke-opacity="0.14"/>
+    <rect x="150" y="150" width="260" height="160" rx="24" fill="#0B1930" stroke="url(#accent)" stroke-opacity="0.4"/>
+    <rect x="446" y="150" width="250" height="160" rx="24" fill="#0B1930" stroke="url(#accent)" stroke-opacity="0.25"/>
+    <rect x="742" y="150" width="308" height="160" rx="24" fill="#0B1930" stroke="url(#accent)" stroke-opacity="0.3"/>
+    <rect x="150" y="342" width="900" height="140" rx="24" fill="#0B1930" stroke="url(#accent)" stroke-opacity="0.18"/>
+    <path d="M208 220H352" stroke="url(#accent)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M208 250H300" stroke="#9FE8FF" stroke-opacity="0.8" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="880" cy="228" r="42" stroke="url(#accent)" stroke-width="10"/>
+    <circle cx="880" cy="228" r="18" fill="#39D0FF" fill-opacity="0.9"/>
+    <path d="M234 390H382M234 426H498M234 462H424" stroke="#9FE8FF" stroke-opacity="0.7" stroke-width="6" stroke-linecap="round"/>
+    <path d="M640 388H928M640 424H856M640 460H980" stroke="#3DD4FF" stroke-opacity="0.8" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="150" y="86" fill="#D7F3FF" font-family="Arial, sans-serif" font-size="28" letter-spacing="6">PORTAFOLIO</text>
+  <text x="150" y="560" fill="#EAF7FF" font-family="Arial, sans-serif" font-size="54" font-weight="700">Sebastian Camargo</text>
+  <text x="150" y="606" fill="#A7C4E7" font-family="Arial, sans-serif" font-size="22">Full Stack Developer &amp; AI Automation Engineer</text>
+</svg>

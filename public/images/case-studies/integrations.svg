@@ -1,0 +1,37 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Microsoft 365 integrations illustration</title>
+  <desc id="desc">Connected rings and integration blocks representing enterprise system links.</desc>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="40" x2="1080" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#050A13"/>
+      <stop offset="1" stop-color="#1A2D4F"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="240" y1="120" x2="920" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#39D0FF"/>
+      <stop offset="1" stop-color="#8D7BFF"/>
+    </linearGradient>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M 42 0 H 0 V 42" stroke="#A7E9FF" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="950" cy="120" r="190" fill="#8D7BFF" fill-opacity="0.12"/>
+  <circle cx="250" cy="500" r="210" fill="#39D0FF" fill-opacity="0.07"/>
+  <g>
+    <rect x="164" y="168" width="186" height="98" rx="22" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.34"/>
+    <rect x="470" y="124" width="260" height="186" rx="30" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.26"/>
+    <rect x="778" y="168" width="186" height="98" rx="22" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.34"/>
+    <rect x="470" y="360" width="260" height="140" rx="26" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.22"/>
+    <circle cx="600" cy="216" r="70" stroke="url(#accent)" stroke-width="10"/>
+    <circle cx="600" cy="430" r="56" stroke="url(#accent)" stroke-width="10"/>
+    <path d="M350 217H530M670 217H778M600 288V360M600 360V316" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M600 304C640 318 672 346 688 385" stroke="#9FE8FF" stroke-opacity="0.6" stroke-width="8" stroke-linecap="round"/>
+    <path d="M600 304C560 318 528 346 512 385" stroke="#9FE8FF" stroke-opacity="0.6" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="600" cy="216" r="22" fill="#39D0FF"/>
+    <circle cx="600" cy="430" r="18" fill="#8D7BFF"/>
+    <path d="M520 428H568M632 428H680" stroke="#9FE8FF" stroke-opacity="0.7" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="164" y="84" fill="#D9F8FF" font-family="Arial, sans-serif" font-size="26" letter-spacing="5">INTEGRATIONS</text>
+  <text x="164" y="560" fill="#EAF7FF" font-family="Arial, sans-serif" font-size="44" font-weight="700">Microsoft 365 &amp; Graph</text>
+</svg>

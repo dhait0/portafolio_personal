@@ -1,0 +1,38 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Internal platform illustration</title>
+  <desc id="desc">A dashboard-style screen with cards and charts in a dark interface.</desc>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="40" x2="1080" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#050B14"/>
+      <stop offset="1" stop-color="#12284B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="180" y1="130" x2="1020" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#39D0FF"/>
+      <stop offset="1" stop-color="#A7FFEB"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 H 0 V 40" stroke="#A7E9FF" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="975" cy="140" r="190" fill="#39D0FF" fill-opacity="0.12"/>
+  <circle cx="220" cy="500" r="220" fill="#A7FFEB" fill-opacity="0.06"/>
+  <g>
+    <rect x="150" y="122" width="900" height="380" rx="34" fill="#071120" stroke="#5ED7FF" stroke-opacity="0.16"/>
+    <rect x="186" y="160" width="250" height="106" rx="22" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.35"/>
+    <rect x="460" y="160" width="250" height="106" rx="22" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.18"/>
+    <rect x="734" y="160" width="280" height="106" rx="22" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.28"/>
+    <rect x="186" y="292" width="460" height="170" rx="24" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.28"/>
+    <rect x="674" y="292" width="340" height="170" rx="24" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.22"/>
+    <path d="M224 206H360" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M500 206H628" stroke="#A7FFEB" stroke-opacity="0.85" stroke-width="8" stroke-linecap="round"/>
+    <path d="M774 206H942" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M230 404H320M230 370H418M230 336H356" stroke="#9FE8FF" stroke-opacity="0.7" stroke-width="7" stroke-linecap="round"/>
+    <path d="M720 400H938M720 366H874M720 332H905" stroke="#9FE8FF" stroke-opacity="0.7" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="942" cy="358" r="44" stroke="url(#accent)" stroke-width="12"/>
+    <circle cx="942" cy="358" r="18" fill="#39D0FF"/>
+  </g>
+  <text x="154" y="84" fill="#D9F8FF" font-family="Arial, sans-serif" font-size="26" letter-spacing="5">PLATFORM</text>
+  <text x="154" y="560" fill="#EAF7FF" font-family="Arial, sans-serif" font-size="46" font-weight="700">Internal SaaS UI</text>
+</svg>

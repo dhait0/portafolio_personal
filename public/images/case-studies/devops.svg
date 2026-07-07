@@ -1,0 +1,38 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">DevOps pipeline illustration</title>
+  <desc id="desc">Pipeline stages, containers and release flow in a dark cyan design.</desc>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="40" x2="1080" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#040A12"/>
+      <stop offset="1" stop-color="#16294B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="220" y1="120" x2="980" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#39D0FF"/>
+      <stop offset="1" stop-color="#67FFB9"/>
+    </linearGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M 44 0 H 0 V 44" stroke="#A7E9FF" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="960" cy="120" r="180" fill="#39D0FF" fill-opacity="0.1"/>
+  <circle cx="240" cy="500" r="210" fill="#67FFB9" fill-opacity="0.06"/>
+  <g>
+    <rect x="154" y="186" width="188" height="102" rx="22" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.32"/>
+    <rect x="388" y="186" width="188" height="102" rx="22" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.24"/>
+    <rect x="622" y="186" width="188" height="102" rx="22" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.38"/>
+    <rect x="856" y="186" width="188" height="102" rx="22" fill="#0B1A31" stroke="url(#accent)" stroke-opacity="0.24"/>
+    <rect x="320" y="364" width="560" height="132" rx="28" fill="#081321" stroke="url(#accent)" stroke-opacity="0.25"/>
+    <path d="M342 237H388M576 237H622M810 237H856" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M845 237H856" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M442 288V364M676 288V364M910 288V364" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M387 430H812" stroke="#9FE8FF" stroke-opacity="0.7" stroke-width="8" stroke-linecap="round"/>
+    <path d="M387 462H738" stroke="#9FE8FF" stroke-opacity="0.55" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="570" cy="430" r="22" fill="#39D0FF"/>
+    <circle cx="660" cy="430" r="22" fill="#67FFB9"/>
+    <circle cx="750" cy="430" r="22" fill="#39D0FF"/>
+  </g>
+  <text x="154" y="84" fill="#D9F8FF" font-family="Arial, sans-serif" font-size="26" letter-spacing="5">DEVOPS</text>
+  <text x="154" y="560" fill="#EAF7FF" font-family="Arial, sans-serif" font-size="46" font-weight="700">CI/CD pipeline</text>
+</svg>

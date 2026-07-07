@@ -5,6 +5,8 @@ export type CaseStudy = {
   title: string;
   category: string;
   summary: string;
+  coverImage?: string;
+  coverImageAlt?: string;
   metrics: Array<[string, string]>;
   overview: string;
   problem: string;
@@ -20,6 +22,33 @@ export type CaseStudy = {
 };
 
 export const supportedLocales: Locale[] = ["es", "en"];
+
+const defaultCaseStudyImages: Record<string, { src: string; alt: string }> = {
+  "enterprise-automation-platform": {
+    src: "/images/case-studies/automation.svg",
+    alt: "Ilustración de automatización empresarial",
+  },
+  "internal-saas-web-platform": {
+    src: "/images/case-studies/platform.svg",
+    alt: "Ilustración de plataforma web interna",
+  },
+  "jenkins-docker-cicd-pipeline": {
+    src: "/images/case-studies/devops.svg",
+    alt: "Ilustración de pipeline DevOps y Docker",
+  },
+  "open-source-software-adaptation": {
+    src: "/images/case-studies/platform.svg",
+    alt: "Ilustración de adaptación de software open source",
+  },
+  "microsoft-365-graph-integrations": {
+    src: "/images/case-studies/integrations.svg",
+    alt: "Ilustración de integraciones Microsoft 365",
+  },
+  "proxmox-private-cloud-infrastructure": {
+    src: "/images/case-studies/infra.svg",
+    alt: "Ilustración de infraestructura privada y virtualización",
+  },
+};
 
 const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
   es: [
@@ -602,4 +631,11 @@ export function getCaseStudies(locale: string | undefined | null): CaseStudy[] {
 
 export function getCaseStudyBySlug(locale: string | undefined | null, slug: string) {
   return getCaseStudies(locale).find((study) => study.slug === slug);
+}
+
+export function getCaseStudyImage(caseStudy: CaseStudy) {
+  return {
+    src: caseStudy.coverImage ?? defaultCaseStudyImages[caseStudy.slug]?.src ?? "/og-default.svg",
+    alt: caseStudy.coverImageAlt ?? defaultCaseStudyImages[caseStudy.slug]?.alt ?? caseStudy.title,
+  };
 }

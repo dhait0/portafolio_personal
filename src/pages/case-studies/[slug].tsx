@@ -1,4 +1,5 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ArrowLeft, Lock } from "lucide-react";
@@ -6,7 +7,7 @@ import { ArchitectureDiagram } from "@/components/sections/ArchitectureDiagram";
 import { ProjectMetric } from "@/components/sections/ProjectMetric";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TechStackCloud } from "@/components/sections/TechStackCloud";
-import { getCaseStudies, getCaseStudyBySlug, type CaseStudy } from "@/content/case-studies";
+import { getCaseStudies, getCaseStudyBySlug, getCaseStudyImage, type CaseStudy } from "@/content/case-studies";
 import { getSiteCopy } from "@/content/site-copy";
 import { SeoHead } from "@/components/seo/SeoHead";
 
@@ -47,10 +48,18 @@ export const getStaticProps: GetStaticProps<CaseStudyPageProps> = async (context
 export default function CaseStudyPage({ study }: CaseStudyPageProps) {
   const router = useRouter();
   const copy = getSiteCopy(router.locale);
+  const cover = getCaseStudyImage(study);
 
   return (
     <>
-      <SeoHead title={`${study.title} | Sebastian Camargo`} description={study.summary} />
+      <SeoHead
+        title={`${study.title} | Sebastian Camargo`}
+        description={study.summary}
+        image={cover.src}
+        imageAlt={cover.alt}
+        type="article"
+        canonicalPath={`/case-studies/${study.slug}`}
+      />
 
       <main className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
@@ -70,6 +79,22 @@ export default function CaseStudyPage({ study }: CaseStudyPageProps) {
             <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">{study.summary}</p>
             <div className="mt-6">
               <TechStackCloud items={study.techStack} />
+            </div>
+            <div className="mt-8 overflow-hidden rounded-[2rem] border border-slate-700/80 bg-slate-950/60">
+              <div className="relative aspect-[16/9]">
+                <Image
+                  src={cover.src}
+                  alt={cover.alt}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 896px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                <div className="absolute left-6 top-6 rounded-full border border-white/10 bg-slate-950/70 px-3 py-1 text-[0.65rem] uppercase tracking-[0.35em] text-slate-200">
+                  {study.category}
+                </div>
+              </div>
             </div>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {study.metrics.map(([value, label]) => (

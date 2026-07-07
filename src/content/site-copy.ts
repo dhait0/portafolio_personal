@@ -2,7 +2,7 @@ import type { Locale } from "@/lib/i18n";
 
 export const siteCopy = {
   es: {
-    brand: "Desarrollador Full Stack e Ingeniero de Automatización con IA",
+    brand: "Desarrollador Full Stack | Automatización con IA",
     nav: {
       home: "Inicio",
       about: "Sobre mí",
@@ -162,7 +162,7 @@ export const siteCopy = {
     languageLabel: "Language",
   },
   en: {
-    brand: "Full Stack Developer & AI Automation Engineer",
+    brand: "Full Stack Developer | AI Automation Developer",
     nav: {
       home: "Home",
       about: "About",
