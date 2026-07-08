@@ -17,6 +17,7 @@ export function AnimatedTimeline({ items }: AnimatedTimelineProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const directionRef = useRef(1);
   const pausedUntilRef = useRef(0);
+  const userControlledRef = useRef(false);
 
   useEffect(() => {
     const scroller = scrollerRef.current;
@@ -40,7 +41,7 @@ export function AnimatedTimeline({ items }: AnimatedTimelineProps) {
       const delta = Math.min(time - lastTime, 32);
       lastTime = time;
 
-      if (time > pausedUntilRef.current) {
+      if (!userControlledRef.current && time > pausedUntilRef.current) {
         const maxScroll = currentScroller.scrollWidth - currentScroller.clientWidth;
 
         if (maxScroll > 0) {
@@ -64,7 +65,11 @@ export function AnimatedTimeline({ items }: AnimatedTimelineProps) {
     };
   }, [items.length]);
 
-  function pauseAutoScroll(duration = 2800) {
+  function pauseAutoScroll(duration = 2800, stopAutoScroll = false) {
+    if (stopAutoScroll) {
+      userControlledRef.current = true;
+    }
+
     pausedUntilRef.current = performance.now() + duration;
   }
 
@@ -82,11 +87,12 @@ export function AnimatedTimeline({ items }: AnimatedTimelineProps) {
       <div
         ref={scrollerRef}
         onMouseEnter={() => pauseAutoScroll(120000)}
-        onMouseLeave={() => pauseAutoScroll(900)}
-        onTouchStart={() => pauseAutoScroll()}
-        onWheel={() => pauseAutoScroll()}
+        onMouseLeave={() => pauseAutoScroll(1200)}
+        onPointerDown={() => pauseAutoScroll(0, true)}
+        onTouchStart={() => pauseAutoScroll(0, true)}
+        onWheel={() => pauseAutoScroll(0, true)}
         onFocus={() => pauseAutoScroll(120000)}
-        onBlur={() => pauseAutoScroll(900)}
+        onBlur={() => pauseAutoScroll(1200)}
         className="overflow-x-auto pb-4"
       >
         <div className="relative flex min-w-max gap-4 px-1 pt-10">

@@ -6,6 +6,7 @@ export const siteCopy = {
     nav: {
       home: "Inicio",
       about: "Sobre mí",
+      aboutPage: "Perfil completo",
       skills: "Habilidades",
       caseStudies: "Casos",
       process: "Proceso",
@@ -74,7 +75,7 @@ export const siteCopy = {
       title: "Ejemplos de proyectos explicados sin datos privados.",
       description:
         "Revisa ejemplos de problemas comunes: automatizar tareas, crear paneles internos, conectar herramientas y mejorar procesos.",
-      carouselHint: "El carrusel avanza solo a baja velocidad. Pasa el cursor para pausarlo.",
+      carouselHint: "Avanza automáticamente uno por uno. Puedes usar las flechas o deslizar para tomar el control.",
       cta: "Ver todos los casos",
     },
     process: {
@@ -162,6 +163,7 @@ export const siteCopy = {
     nav: {
       home: "Home",
       about: "About",
+      aboutPage: "Full profile",
       skills: "Skills",
       caseStudies: "Case studies",
       process: "Process",
@@ -230,7 +232,7 @@ export const siteCopy = {
       title: "Project examples explained without private data.",
       description:
         "Review examples of common needs: automating tasks, building internal dashboards, connecting tools and improving processes.",
-      carouselHint: "The carousel auto-advances slowly. Hover to pause it.",
+      carouselHint: "It advances one card at a time. Use the arrows or swipe horizontally to take control.",
       cta: "View all cases",
     },
     process: {

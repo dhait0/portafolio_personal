@@ -47,7 +47,8 @@ export function Navbar() {
 
           <nav className="hidden items-center gap-2 lg:flex">
             {[
-              ["/#about", copy.nav.about],
+              ["/", copy.nav.home],
+              ["/about", copy.nav.about],
               ["/#skills", copy.nav.skills],
               ["/case-studies", copy.nav.caseStudies],
               ["/#process", copy.nav.process],
@@ -96,7 +97,8 @@ export function Navbar() {
 
         <div className="flex gap-2 overflow-x-auto border-t border-white/10 px-3 py-3 sm:px-4 lg:hidden">
           {[
-            ["/#about", copy.nav.about],
+            ["/", copy.nav.home],
+            ["/about", copy.nav.about],
             ["/#skills", copy.nav.skills],
             ["/case-studies", copy.nav.caseStudies],
             ["/#process", copy.nav.process],

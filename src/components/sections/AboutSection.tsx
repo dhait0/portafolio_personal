@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectMetric } from "@/components/sections/ProjectMetric";
 import type { LucideIcon } from "lucide-react";
@@ -27,6 +29,10 @@ export function AboutSection() {
             title={copy.about.title}
             description={copy.about.description}
           />
+          <Link href="/about" className="btn-secondary mt-6 px-5 py-3 text-sm">
+            {copy.nav.aboutPage}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">

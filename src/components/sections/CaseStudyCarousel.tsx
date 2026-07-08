@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef, type WheelEvent as ReactWheelEvent } from "react";
-import { motion } from "framer-motion";
-import { MoveRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { CaseStudy } from "@/content/case-studies";
 import { CaseStudyCard } from "@/components/sections/CaseStudyCard";
 
@@ -12,140 +11,228 @@ type CaseStudyCarouselProps = {
 
 export function CaseStudyCarousel({ studies }: CaseStudyCarouselProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const isAdjustingRef = useRef(false);
-  const pausedUntilRef = useRef(0);
-  const track = useMemo(() => [...studies, ...studies, ...studies], [studies]);
+  const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const activeIndexRef = useRef(0);
+  const activeVirtualIndexRef = useRef(0);
+  const isRecenteringRef = useRef(false);
+  const isPausedRef = useRef(false);
+  const resumeTimeoutRef = useRef<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const track = [...studies, ...studies, ...studies];
+  const middleOffset = studies.length;
 
   useEffect(() => {
+    cardRefs.current = cardRefs.current.slice(0, track.length);
+  }, [track.length]);
+
+  useEffect(() => {
+    if (studies.length === 0) {
+      return;
+    }
+
+    const frameId = window.requestAnimationFrame(() => {
+      scrollToVirtualIndex(middleOffset, "auto");
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
+  }, [middleOffset, studies.length]);
+
+  useEffect(() => {
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
+
+  useEffect(() => {
+    if (studies.length <= 1) {
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      if (isPausedRef.current) {
+        return;
+      }
+
+      scrollToVirtualIndex(activeVirtualIndexRef.current + 1);
+    }, 5000);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [studies.length]);
+
+  useEffect(() => {
+    return () => {
+      if (resumeTimeoutRef.current) {
+        window.clearTimeout(resumeTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  function setPaused(paused: boolean, delay = 0) {
+    if (resumeTimeoutRef.current) {
+      window.clearTimeout(resumeTimeoutRef.current);
+      resumeTimeoutRef.current = null;
+    }
+
+    if (paused || delay === 0) {
+      isPausedRef.current = paused;
+      return;
+    }
+
+    resumeTimeoutRef.current = window.setTimeout(() => {
+      isPausedRef.current = false;
+      resumeTimeoutRef.current = null;
+    }, delay);
+  }
+
+  function getLogicalIndex(index: number) {
+    const total = studies.length;
+
+    if (total === 0) {
+      return 0;
+    }
+
+    return ((index % total) + total) % total;
+  }
+
+  function scrollToVirtualIndex(index: number, behavior: ScrollBehavior = "smooth") {
+    const total = studies.length;
+
+    if (total === 0) {
+      return;
+    }
+
+    const card = cardRefs.current[index];
+
+    if (!card) {
+      return;
+    }
+
+    card.scrollIntoView({
+      behavior,
+      inline: "start",
+      block: "nearest",
+    });
+
+    const logicalIndex = getLogicalIndex(index);
+    activeVirtualIndexRef.current = index;
+    setActiveIndex(logicalIndex);
+  }
+
+  function handleScroll() {
     const scroller = scrollerRef.current;
 
     if (!scroller || studies.length === 0) {
       return;
     }
 
-    const loopWidth = scroller.scrollWidth / 3;
-    scroller.scrollLeft = loopWidth;
-  }, [studies]);
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
 
-  useEffect(() => {
-    const scroller = scrollerRef.current;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (!scroller || studies.length === 0 || prefersReducedMotion) {
-      return;
-    }
-
-    let frameId = 0;
-    let lastTime = performance.now();
-    const pixelsPerSecond = 28;
-
-    function animateScroll(time: number) {
-      const currentScroller = scrollerRef.current;
-
-      if (!currentScroller) {
+    cardRefs.current.forEach((card, index) => {
+      if (!card) {
         return;
       }
 
-      const delta = Math.min(time - lastTime, 32);
-      lastTime = time;
+      const distance = Math.abs(card.offsetLeft - scroller.scrollLeft);
 
-      if (time > pausedUntilRef.current) {
-        currentScroller.scrollLeft += pixelsPerSecond * (delta / 1000);
-        recenterScroll();
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
       }
+    });
 
-      frameId = requestAnimationFrame(animateScroll);
+    const logicalIndex = getLogicalIndex(closestIndex);
+
+    activeVirtualIndexRef.current = closestIndex;
+
+    if (logicalIndex !== activeIndexRef.current) {
+      setActiveIndex(logicalIndex);
     }
 
-    frameId = requestAnimationFrame(animateScroll);
+    if (!isRecenteringRef.current && (closestIndex < studies.length || closestIndex >= studies.length * 2)) {
+      const centeredIndex = middleOffset + logicalIndex;
 
-    return () => {
-      cancelAnimationFrame(frameId);
-    };
-  }, [studies.length]);
+      isRecenteringRef.current = true;
+      activeVirtualIndexRef.current = centeredIndex;
 
-  function pauseAutoScroll(duration = 2800) {
-    pausedUntilRef.current = performance.now() + duration;
-  }
-
-  function recenterScroll() {
-    const scroller = scrollerRef.current;
-
-    if (!scroller || studies.length === 0 || isAdjustingRef.current) {
-      return;
-    }
-
-    const loopWidth = scroller.scrollWidth / 3;
-
-    if (scroller.scrollLeft <= loopWidth * 0.5) {
-      isAdjustingRef.current = true;
-      scroller.scrollLeft += loopWidth;
-      requestAnimationFrame(() => {
-        isAdjustingRef.current = false;
-      });
-    } else if (scroller.scrollLeft >= loopWidth * 1.5) {
-      isAdjustingRef.current = true;
-      scroller.scrollLeft -= loopWidth;
-      requestAnimationFrame(() => {
-        isAdjustingRef.current = false;
+      window.requestAnimationFrame(() => {
+        scrollToVirtualIndex(centeredIndex, "auto");
+        isRecenteringRef.current = false;
       });
     }
   }
 
-  function handleWheel(event: ReactWheelEvent<HTMLDivElement>) {
-    const scroller = scrollerRef.current;
-
-    if (!scroller) {
-      return;
-    }
-
-    const canScrollHorizontally = scroller.scrollWidth > scroller.clientWidth;
-    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
-
-    if (!canScrollHorizontally || delta === 0) {
-      return;
-    }
-
-    event.preventDefault();
-    pauseAutoScroll();
-    scroller.scrollLeft += delta;
-    recenterScroll();
+  function handleManualStep(index: number) {
+    setPaused(true);
+    scrollToVirtualIndex(index);
+    setPaused(false, 3500);
   }
 
   return (
-    <div className="relative [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-4 top-3 z-10 rounded-full border border-white/10 bg-[rgba(11,27,43,0.82)] p-2 text-[var(--color-orange-strong)] shadow-[0_12px_32px_rgba(4,12,20,0.22)] backdrop-blur-md"
-        animate={{ x: [0, 8, 0], opacity: [0.62, 1, 0.62] }}
-        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <MoveRight className="h-4 w-4" />
-      </motion.div>
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-0 z-[1] h-full w-24 bg-gradient-to-l from-[rgba(11,23,36,0.72)] to-transparent"
-        animate={{ opacity: [0.55, 0.92, 0.55] }}
-        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <div
-        ref={scrollerRef}
-        onWheel={handleWheel}
-        onScroll={recenterScroll}
-        onMouseEnter={() => pauseAutoScroll(120000)}
-        onMouseLeave={() => pauseAutoScroll(900)}
-        onTouchStart={() => pauseAutoScroll()}
-        onFocus={() => pauseAutoScroll(120000)}
-        onBlur={() => pauseAutoScroll(900)}
-        className="case-carousel-scroll flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden py-2"
-      >
-        {track.map((study, index) => (
-          <div
-            key={`${study.slug}-${index}`}
-            className="w-[min(86vw,440px)] shrink-0 snap-start sm:w-[420px] lg:w-[440px]"
-          >
-            <CaseStudyCard caseStudy={study} compact />
-          </div>
+    <div
+      className="relative"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false, 1200)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false, 1200)}
+    >
+      <div className="grid grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] items-center gap-2 sm:grid-cols-[3rem_minmax(0,1fr)_3rem] sm:gap-4">
+        <button
+          type="button"
+          onClick={() => handleManualStep(activeVirtualIndexRef.current - 1)}
+          aria-label="Previous case study"
+          className="surface-soft inline-flex h-11 w-11 items-center justify-center rounded-full text-main transition hover:border-orange-200/40 hover:bg-white/10 sm:h-12 sm:w-12"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+
+        <div
+          ref={scrollerRef}
+          onScroll={handleScroll}
+          onPointerDown={() => setPaused(true)}
+          onPointerUp={() => setPaused(false, 3500)}
+          onTouchStart={() => setPaused(true)}
+          onTouchEnd={() => setPaused(false, 3500)}
+          className="case-carousel-scroll flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden py-2 sm:gap-5"
+        >
+          {track.map((study, index) => (
+            <div
+              key={`${study.slug}-${index}`}
+              ref={(element) => {
+                cardRefs.current[index] = element;
+              }}
+              className="flex min-w-0 shrink-0 basis-full snap-start sm:basis-[calc((100%_-_1.25rem)/2)] lg:basis-[calc((100%_-_2.5rem)/3)]"
+            >
+              <CaseStudyCard caseStudy={study} compact />
+            </div>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          onClick={() => handleManualStep(activeVirtualIndexRef.current + 1)}
+          aria-label="Next case study"
+          className="surface-soft inline-flex h-11 w-11 items-center justify-center rounded-full text-main transition hover:border-orange-200/40 hover:bg-white/10 sm:h-12 sm:w-12"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
+
+      <div className="mt-5 flex items-center justify-center gap-2">
+        {studies.map((study, index) => (
+          <button
+            key={study.slug}
+            type="button"
+            onClick={() => handleManualStep(middleOffset + index)}
+            aria-label={`Go to ${study.title}`}
+            className={`h-2.5 rounded-full transition ${
+              index === activeIndex
+                ? "w-8 bg-[var(--color-orange-strong)]"
+                : "w-2.5 bg-white/20 hover:bg-white/35"
+            }`}
+          />
         ))}
       </div>
     </div>

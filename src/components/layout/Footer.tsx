@@ -26,6 +26,9 @@ export function Footer() {
           <Link href="/#hero" className="transition hover:text-main">
             {copy.nav.home}
           </Link>
+          <Link href="/about" className="transition hover:text-main">
+            {copy.nav.about}
+          </Link>
           <Link href="/case-studies" className="transition hover:text-main">
             {copy.nav.caseStudies}
           </Link>
