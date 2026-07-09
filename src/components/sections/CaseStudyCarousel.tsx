@@ -97,20 +97,23 @@ export function CaseStudyCarousel({ studies }: CaseStudyCarouselProps) {
       return;
     }
 
-    const card = cardRefs.current[index];
+    const normalizedIndex = index < 0 || index >= track.length ? middleOffset + getLogicalIndex(index) : index;
+    const card = cardRefs.current[normalizedIndex];
+    const scroller = scrollerRef.current;
 
-    if (!card) {
+    if (!card || !scroller) {
       return;
     }
 
-    card.scrollIntoView({
+    const nextLeft = scroller.scrollLeft + card.getBoundingClientRect().left - scroller.getBoundingClientRect().left;
+
+    scroller.scrollTo({
+      left: nextLeft,
       behavior,
-      inline: "start",
-      block: "nearest",
     });
 
-    const logicalIndex = getLogicalIndex(index);
-    activeVirtualIndexRef.current = index;
+    const logicalIndex = getLogicalIndex(normalizedIndex);
+    activeVirtualIndexRef.current = normalizedIndex;
     setActiveIndex(logicalIndex);
   }
 

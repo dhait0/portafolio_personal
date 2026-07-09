@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, type ReactNode } from "react";
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Navbar } from "@/components/layout/Navbar";
@@ -13,10 +13,19 @@ type PageShellProps = {
 export function PageShell({ children }: PageShellProps) {
   const router = useRouter();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    window.history.scrollRestoration = "manual";
+
     const hash = router.asPath.split("#")[1];
 
     if (!hash) {
+      if (router.pathname === "/") {
+        window.scrollTo(0, 0);
+      }
       return;
     }
 
@@ -41,6 +50,24 @@ export function PageShell({ children }: PageShellProps) {
       window.clearTimeout(timeoutId);
     };
   }, [router.asPath]);
+
+  useEffect(() => {
+    if (router.pathname !== "/") {
+      return;
+    }
+
+    function handlePageShow(event: PageTransitionEvent) {
+      if (event.persisted) {
+        window.scrollTo(0, 0);
+      }
+    }
+
+    window.addEventListener("pageshow", handlePageShow);
+
+    return () => {
+      window.removeEventListener("pageshow", handlePageShow);
+    };
+  }, [router.pathname]);
 
   return (
     <MotionConfig reducedMotion="user">
