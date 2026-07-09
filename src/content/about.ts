@@ -66,12 +66,12 @@ const aboutPageByLocale: Record<Locale, AboutPageContent> = {
     experienceTitle: "Experiencia",
     experienceSectionTitle: "Experiencia aplicada a problemas operativos reales.",
     experienceIntro:
-      "Mi experiencia combina desarrollo, automatización y soporte TI. La transición no fue un cambio de carrera aislado, sino una evolución natural desde operaciones técnicas hacia soluciones más completas.",
+      "Tengo más de 4 años de experiencia acumulada entre prácticas, soporte TI, asistencia tecnológica y desarrollo/automatización. La transición no fue un cambio de carrera aislado, sino una evolución natural desde operaciones técnicas hacia soluciones más completas.",
     experience: [
       {
         role: "Desarrollador y Automatizador de Procesos",
         company: "Vadel S.A.S",
-        period: "Septiembre 2024 - Febrero 2025",
+        period: "Septiembre 2025 - Actualmente",
         summary:
           "Participé en desarrollo web, automatización de flujos y soporte técnico-funcional para necesidades operativas del negocio.",
         bullets: [
@@ -87,7 +87,7 @@ const aboutPageByLocale: Record<Locale, AboutPageContent> = {
       {
         role: "Asistente de Tecnologías de la Información",
         company: "Vadel S.A.S",
-        period: "Agosto 2024 - Febrero 2025",
+        period: "Marzo 2025 - Septiembre 2025",
         summary:
           "Soporte técnico y administración tecnológica general en ambientes empresariales con foco en continuidad operativa.",
         bullets: [
@@ -99,7 +99,20 @@ const aboutPageByLocale: Record<Locale, AboutPageContent> = {
         ],
       },
       {
-        role: "Practicante Universitario",
+        role: "Prácticas Universitarias",
+        company: "Vadel S.A.S",
+        period: "Septiembre 2024 - Marzo 2025",
+        summary:
+          "Etapa de formación aplicada a soporte y operación tecnológica, con tareas muy cercanas a las del rol de asistencia TI.",
+        bullets: [
+          "Apoyo en soporte técnico y funcional para usuarios y equipos.",
+          "Participación en tareas de verificación, diagnóstico y configuración de sistemas.",
+          "Acompañamiento en operaciones de infraestructura y herramientas corporativas.",
+          "Base práctica para pasar después al rol de asistente.",
+        ],
+      },
+      {
+        role: "Prácticas SENA",
         company: "SENA",
         period: "Enero 2022 - Noviembre 2023",
         summary:
@@ -226,12 +239,12 @@ const aboutPageByLocale: Record<Locale, AboutPageContent> = {
     experienceTitle: "Experience",
     experienceSectionTitle: "Experience applied to real operational problems.",
     experienceIntro:
-      "My experience combines development, automation and IT support. The shift was not an isolated career change, but a natural evolution from technical operations into more complete solutions.",
+      "I have more than 4 years of cumulative experience across internships, IT support, technology assistance and development/automation. The shift was not an isolated career change, but a natural evolution from technical operations into more complete solutions.",
     experience: [
       {
         role: "Developer and Process Automation Specialist",
         company: "Vadel S.A.S",
-        period: "September 2024 - February 2025",
+        period: "September 2025 - Present",
         summary:
           "Worked across web development, workflow automation and technical-functional support for operational business needs.",
         bullets: [
@@ -247,7 +260,7 @@ const aboutPageByLocale: Record<Locale, AboutPageContent> = {
       {
         role: "Information Technology Assistant",
         company: "Vadel S.A.S",
-        period: "August 2024 - February 2025",
+        period: "March 2025 - September 2025",
         summary:
           "Handled technical support and general technology administration in business environments with a focus on operational continuity.",
         bullets: [
@@ -259,7 +272,20 @@ const aboutPageByLocale: Record<Locale, AboutPageContent> = {
         ],
       },
       {
-        role: "University Intern",
+        role: "University Practice",
+        company: "Vadel S.A.S",
+        period: "September 2024 - March 2025",
+        summary:
+          "Training stage focused on support and technology operations, with responsibilities close to the IT assistant role.",
+        bullets: [
+          "Supported technical and functional help for users and equipment.",
+          "Participated in verification, diagnostics and system configuration tasks.",
+          "Assisted with infrastructure operations and corporate tools.",
+          "Built the practical base that later led to the assistant role.",
+        ],
+      },
+      {
+        role: "SENA Practice",
         company: "SENA",
         period: "January 2022 - November 2023",
         summary:

@@ -38,10 +38,10 @@ export const siteCopy = {
       description:
         "Empecé resolviendo problemas de usuarios, equipos y sistemas. Hoy uso esa experiencia para crear herramientas web, automatizaciones y mejoras que ayudan a trabajar con más orden.",
       metrics: [
-        ["6+", "ejemplos de proyectos explicados sin datos privados"],
-        ["4", "demos públicas para ver mi forma de trabajar"],
-        ["Negocio", "enfoque en ahorrar tiempo y ordenar procesos"],
-        ["Completo", "de la idea inicial a una solución funcionando"],
+        ["4+", "años de experiencia acumulada"],
+        ["3", "roles recorridos en VADEL"],
+        ["Full Stack", "desarrollo, automatización e integración"],
+        ["Soporte TI", "base técnica y operación empresarial"],
       ],
       highlights: ["Web", "Automatización", "Sistemas", "Soporte"],
     },
@@ -75,7 +75,7 @@ export const siteCopy = {
       title: "Ejemplos de proyectos explicados sin datos privados.",
       description:
         "Revisa ejemplos de problemas comunes: automatizar tareas, crear paneles internos, conectar herramientas y mejorar procesos.",
-      carouselHint: "Avanza automáticamente uno por uno. Puedes usar las flechas o deslizar para tomar el control.",
+      carouselHint: "Navega con las flechas o desliza horizontalmente.",
       cta: "Ver todos los casos",
     },
     process: {
@@ -195,10 +195,10 @@ export const siteCopy = {
       description:
         "I started by solving user, equipment and systems problems. Today I use that experience to create web tools, automations and improvements that make work more organized.",
       metrics: [
-        ["6+", "project examples explained without private data"],
-        ["4", "public demos to show how I work"],
-        ["Business", "focused on saving time and organizing processes"],
-        ["Complete", "from the first idea to a working solution"],
+        ["4+", "years of cumulative experience"],
+        ["3", "roles at VADEL"],
+        ["Full Stack", "development, automation and integration"],
+        ["IT Support", "technical foundation and business operations"],
       ],
       highlights: ["Web", "Automation", "Systems", "Support"],
     },
@@ -232,7 +232,7 @@ export const siteCopy = {
       title: "Project examples explained without private data.",
       description:
         "Review examples of common needs: automating tasks, building internal dashboards, connecting tools and improving processes.",
-      carouselHint: "It advances one card at a time. Use the arrows or swipe horizontally to take control.",
+      carouselHint: "Use the arrows or swipe horizontally.",
       cta: "View all cases",
     },
     process: {

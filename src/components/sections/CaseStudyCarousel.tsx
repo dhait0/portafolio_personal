@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type WheelEvent as ReactWheelEvent } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { CaseStudy } from "@/content/case-studies";
 import { CaseStudyCard } from "@/components/sections/CaseStudyCard";
@@ -10,14 +10,14 @@ type CaseStudyCarouselProps = {
 };
 
 export function CaseStudyCarousel({ studies }: CaseStudyCarouselProps) {
+  const rootRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const activeIndexRef = useRef(0);
   const activeVirtualIndexRef = useRef(0);
   const isRecenteringRef = useRef(false);
-  const isPausedRef = useRef(false);
-  const resumeTimeoutRef = useRef<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isInView, setIsInView] = useState(false);
   const track = [...studies, ...studies, ...studies];
   const middleOffset = studies.length;
 
@@ -44,47 +44,41 @@ export function CaseStudyCarousel({ studies }: CaseStudyCarouselProps) {
   }, [activeIndex]);
 
   useEffect(() => {
-    if (studies.length <= 1) {
+    const root = rootRef.current;
+
+    if (!root) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.45,
+      },
+    );
+
+    observer.observe(root);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isInView || studies.length <= 1) {
       return;
     }
 
     const intervalId = window.setInterval(() => {
-      if (isPausedRef.current) {
-        return;
-      }
-
       scrollToVirtualIndex(activeVirtualIndexRef.current + 1);
     }, 5000);
 
     return () => {
       window.clearInterval(intervalId);
     };
-  }, [studies.length]);
-
-  useEffect(() => {
-    return () => {
-      if (resumeTimeoutRef.current) {
-        window.clearTimeout(resumeTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  function setPaused(paused: boolean, delay = 0) {
-    if (resumeTimeoutRef.current) {
-      window.clearTimeout(resumeTimeoutRef.current);
-      resumeTimeoutRef.current = null;
-    }
-
-    if (paused || delay === 0) {
-      isPausedRef.current = paused;
-      return;
-    }
-
-    resumeTimeoutRef.current = window.setTimeout(() => {
-      isPausedRef.current = false;
-      resumeTimeoutRef.current = null;
-    }, delay);
-  }
+  }, [isInView, studies.length]);
 
   function getLogicalIndex(index: number) {
     const total = studies.length;
@@ -144,7 +138,6 @@ export function CaseStudyCarousel({ studies }: CaseStudyCarouselProps) {
     });
 
     const logicalIndex = getLogicalIndex(closestIndex);
-
     activeVirtualIndexRef.current = closestIndex;
 
     if (logicalIndex !== activeIndexRef.current) {
@@ -165,19 +158,31 @@ export function CaseStudyCarousel({ studies }: CaseStudyCarouselProps) {
   }
 
   function handleManualStep(index: number) {
-    setPaused(true);
     scrollToVirtualIndex(index);
-    setPaused(false, 3500);
+  }
+
+  function handleWheel(event: ReactWheelEvent<HTMLDivElement>) {
+    const scroller = scrollerRef.current;
+
+    if (!scroller) {
+      return;
+    }
+
+    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+
+    if (delta === 0) {
+      return;
+    }
+
+    event.preventDefault();
+    scroller.scrollBy({
+      left: delta,
+      behavior: "auto",
+    });
   }
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false, 1200)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false, 1200)}
-    >
+    <div ref={rootRef} className="relative">
       <div className="grid grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] items-center gap-2 sm:grid-cols-[3rem_minmax(0,1fr)_3rem] sm:gap-4">
         <button
           type="button"
@@ -191,10 +196,7 @@ export function CaseStudyCarousel({ studies }: CaseStudyCarouselProps) {
         <div
           ref={scrollerRef}
           onScroll={handleScroll}
-          onPointerDown={() => setPaused(true)}
-          onPointerUp={() => setPaused(false, 3500)}
-          onTouchStart={() => setPaused(true)}
-          onTouchEnd={() => setPaused(false, 3500)}
+          onWheel={handleWheel}
           className="case-carousel-scroll flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden py-2 sm:gap-5"
         >
           {track.map((study, index) => (
